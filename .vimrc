@@ -24,8 +24,40 @@ set cursorline
 
 "显示状态栏"
 set laststatus=2
-"格式化状态栏输出"
+"无插件：格式化状态栏输出"
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+"lightline的状态栏设置"
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'gitbranch': '',
+      \   'filename': '%<%f',
+      \   'filetype': '%Y',
+      \ },
+      \ 'component_function': {
+      \   'lineinfo': 'LightlineLineInfo'
+      \ },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'tabline_separator': { 'left': '', 'right': '' },
+      \ 'tabline_subseparator': { 'left': '', 'right': '' },
+      \ 'tabline': { 'left': [ [ 'tabs' ] ], 'right': [ [ 'close' ] ] }
+      \ }
+
+function! LightlineLineInfo()
+  let line = line('.')
+  let total_lines = line('$')
+  return line . '/' . total_lines
+endfunction
+
+
 "状态栏显示光标位置信息"
 set ruler
 
