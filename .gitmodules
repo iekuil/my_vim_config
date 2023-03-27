@@ -1,0 +1,6 @@
+[submodule ".vim/plugged/nerdtree"]
+	path = .vim/plugged/nerdtree
+	url = http://github.com/scrooloose/nerdtree
+[submodule ".vim/plugged/lightline.vim"]
+	path = .vim/plugged/lightline.vim
+	url = http://github.com/itchyny/lightline.vim
