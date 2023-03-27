@@ -37,13 +37,13 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component': {
-      \   'gitbranch': '',
       \   'filename': '%<%f',
       \   'filetype': '%Y',
       \ },
       \ 'component_function': {
-      \   'lineinfo': 'LightlineLineInfo'
-      \ },
+      \   'lineinfo': 'LightlineLineInfo' ,
+	  \   'gitbranch': 'LightlineGitBranch'
+	  \ },
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'tabline_separator': { 'left': '', 'right': '' },
@@ -55,6 +55,11 @@ function! LightlineLineInfo()
   let line = line('.')
   let total_lines = line('$')
   return line . '/' . total_lines
+endfunction
+
+function! LightlineGitBranch()
+  let refname = substitute(system('git symbolic-ref --short HEAD 2>/dev/null'), '\n', '', '')
+  return refname != '' ? ' '.refname : ''
 endfunction
 
 
