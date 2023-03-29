@@ -32,7 +32,6 @@ let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ],
       \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
@@ -109,10 +108,10 @@ set encoding=utf-8
 "高亮匹配括号"
 set showmatch
 
-"设置一个tab的宽度为四个空格"
-set tabstop=4
+"设置一个tab的宽度"
+set tabstop=2
 "设置自动缩进的宽度"
-set shiftwidth=4
+set shiftwidth=2
 "开启自动继承上一行的缩进"
 set autoindent
 "按下tab时，插入等长度的空格"
@@ -144,4 +143,5 @@ set showmode
 "展示已输入的部分命令
 set showcmd
 
-
+"自动打开nerdtree
+autocmd BufWinEnter * NERDTreeToggle
